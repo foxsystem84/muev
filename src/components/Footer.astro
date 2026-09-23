@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { color } = Astro.props;
+---
+
+<footer
+  class="bg-[#102317] py-20 px-4 md:px-6 lg:px-12 font-body"
+  role="contentinfo"
+>
+  <div class="container mx-auto">
+    <div
+      class="flex flex-col md:flex-row justify-center md:justify-between items-center space-y-8 md:space-y-0"
+    >
+      <div class="flex space-x-6 items-center">
+        <a
+          href="https://www.facebook.com/matrimoniosunidosenvictoriaMUEV?locale=es_LA"
+          class="w-10 h-10 flex items-center justify-center"
+          aria-label="Visitar Facebook"
+        >
+          <Icon
+            name="facebook"
+            class="w-6 h-6 transform group-hover:rotate-180 transition-transform"
+          />
+        </a>
+        <a
+          href="https://www.instagram.com/muev_comunidad/"
+          class="w-10 h-10 flex items-center justify-center"
+          aria-label="Visitar instagram"
+        >
+          <Icon
+            name="instagram"
+            class="w-6 h-6 transform group-hover:rotate-180 transition-transform"
+          />
+        </a>
+        <a
+          href="https://www.tiktok.com/@matrimoniosunidos"
+          class="w-10 h-10 flex items-center justify-center"
+          aria-label="Visitar tiktok"
+        >
+          <Icon
+            name="tiktok"
+            class="w-6 h-6 transform group-hover:rotate-180 transition-transform"
+          />
+        </a>
+      </div>
+
+      <div>
+        <ul class="space-y-4 items-center">
+          <li><a href="/" class="hover:underline">Home</a></li>
+          <li><a href="/acerca-de" class="hover:underline">Acerca de</a></li>
+          <li>
+            <a href="/testimonio" class="hover:underline">Testimonios</a>
+          </li>
+        </ul>
+      </div>
+
+      <ul class={`space-y-2 text-${color}`}>
+        <li class="flex items-center">
+          <Icon
+            name="phone"
+            class="w-5 h-5 transform group-hover:rotate-180 transition-transform"
+          />
+          <span class="ml-2 block">+51 994103179</span>
+        </li>
+        <li class="flex items-center">
+          <Icon
+            name="whatsapp"
+            class="w-5 h-5 transform group-hover:rotate-180 transition-transform"
+          />
+          <span class="ml-2 block"> +51 992779626 </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <div
+    class="container mx-auto mt-12 pt-8 border-t border-[#4e9967] text-center text-sm"
+  >
+    <p>
+      © 2026 <span class="font-semibold">
+        Confecciones Kuska | Todos los derechos reservados.</span
+      >
+    </p>
+  </div> -->
+</footer>

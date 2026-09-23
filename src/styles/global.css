@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Declaración de Oswald --- */
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-heading: "Oswald", sans-serif;
+  --font-body: "Roboto", sans-serif;
+
+  --color-brand-brown: #a72a2a;
+  --color-brand-green: #408657;
+  --white: #ffffff;
+
+  /* Configuración de Colores */
+  /* Al usar el prefijo --color-seagreen-*, Tailwind v4 generará las clases correspondientes */
+  --color-seagreen-50: #f3faf5;
+  --color-seagreen-100: #e5f3e9;
+  --color-seagreen-200: #cbe7d4;
+  --color-seagreen-300: #a2d3b2;
+  --color-seagreen-400: #72b688;
+  --color-seagreen-500: #4e9967;
+  --color-seagreen-600: #408657;
+  --color-seagreen-700: #326342;
+  --color-seagreen-800: #2b5038;
+  --color-seagreen-900: #25422f;
+  --color-seagreen-950: #102317;
+
+  --breakpoint-sm: 540px;
+  --breakpoint-md: 720px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1140px;
+  --breakpoint-2xl: 1320px;
+}
+
+@layer base {
+  body {
+    color: var(--white);
+
+    /* Opcionalmente, puedes usar la variable directamente: */
+    /* color: var(--color-brand-brown); */
+  }
+}

@@ -1,23 +1,42 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Whatsapp from "../components/Whatsapp.astro";
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Somos un Movimiento Laical Catolico,cuya misión es FORTALECER los matrimonios cristianos y RESTAURAR la unidad de  los matrimonios en crisis a través de RETIROS."
+    />
+    <title>{title || "Muev"}</title>
+  </head>
+  <body class="bg-[#f3faf5]">
+    <Navbar />
+    <Whatsapp />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline src="/_vercel/insights/script.js"></script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    /* margin: 0;
+    width: 100%;
+    height: 100%; */
+  }
 </style>

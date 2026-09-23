@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+const numbers = [
+  {
+    number: "999889032",
+  },
+];
+---
+
+<div class="fixed bottom-9 right-4 lg:right-10 animate-bounce z-100">
+  <div
+    class="absolute bottom-12 md:bottom-14 right-14 md:right-16 border border-[#4e9967] bg-orange-50 py-1 md:py-2 px-2 md:px-4 rounded-lg"
+  >
+    <span class="text-sm md:text-base text-[#408657]">¡Contáctanos!</span>
+  </div>
+  <a
+    aria-label="whatsapp"
+    href={`https://api.whatsapp.com/send?phone=+51992779626`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class=""
+  >
+    <Icon
+      name="whatsapp"
+      class="h-14 md:h-16 w-14 md:w-16 text-white bg-[#128C7E] rounded-full"
+    />
+    <!-- <span
+      class="animate-ping absolute top-0 h-16 w-16 rounded-full bg-[#128C7E]/50"
+    ></span> -->
+  </a>
+</div>

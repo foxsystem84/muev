@@ -1,0 +1,190 @@
+---
+import { Icon } from "astro-icon/components";
+//import { slugify } from "../js/utils";
+import { Image } from "astro:assets";
+
+const menus = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "Acerca de",
+    url: "/acerca-de",
+  },
+  {
+    name: "Testimonios",
+    url: "/testimonios",
+  },
+];
+
+const { color } = Astro.props;
+---
+
+<nav id="navbar" class="bg-[#408657] font-body" role="navigation">
+  <div
+    class="container mx-auto flex justify-between items-center py-2 px-4 md:px-0"
+  >
+    <a aria-label="logo" href="/" class="w-[72px] h-[60px]">
+      <Image src="/logoM.webp" alt="logo kuska" width="50" height="30" />
+    </a>
+
+    <!-- <Link /> -->
+    <ul class={` hidden md:flex  items-center gap-[3vw] text-${color}`}>
+      <li class="font-semibold">
+        <a href="/" class="hover:text-[#cbe7d4]">Home</a>
+      </li>
+      <li class="font-semibold">
+        <a href="/acerca-de" class="hover:text-[#cbe7d4]">Acerca de</a>
+      </li>
+      <li class="font-semibold relative group">
+        <!-- <button
+          class="w-full text-left px-4 py-3 hover:text-orange-600 flex justify-between items-center"
+        >
+          <span class="mr-2">Testimonios</span>
+
+          <Icon
+            name="chevron-up"
+            class="w-4 h-4 transform group-hover:rotate-180 transition-transform"
+          />
+        </button> -->
+        <a href="/testimonio" class="hover:text-[#cbe7d4]">Testimonios</a>
+      </li>
+    </ul>
+
+    <ul class={`hidden md:flex items-center gap-2 text-${color}`}>
+      <li>
+        <a href="tel:+51 994103179" class="hover:text-[#cbe7d4]">
+          <Icon
+            name="phone"
+            class="w-5 h-5 transform group-hover:rotate-180 transition-transform"
+          />
+        </a>
+      </li>
+      <li>
+        <a href="mailto:piruchos1408@hotmail.com" class="hover:text-[#cbe7d4]">
+          <Icon
+            name="envelope"
+            class="w-5 h-5 transform group-hover:rotate-180 transition-transform"
+          />
+        </a>
+      </li>
+      <li>
+        <a href="https://wa.me/+51992779626" class="hover:text-[#cbe7d4]">
+          <Icon
+            name="whatsapp"
+            class="w-4 h-4 transform group-hover:rotate-180 transition-transform"
+          />
+        </a>
+      </li>
+    </ul>
+
+    <div class="relative z-50 flex items-center lg:hidden">
+      <button id="toggle-btn" aria-label="toggle-btn" class="h-10 w-10">
+        <Icon name="bars3" class="" width="36" height="36" />
+      </button>
+    </div>
+  </div>
+</nav>
+<!-- iphone -->
+<div id="sidebar" class="z-50">
+  <div class="relative mt-6 flex-1 px-4 sm:px-6">
+    {/* Your content */}
+    <div class="flex justify-between mb-12">
+      <a aria-label="logo" href="/">
+        <img src="/logoM.webp" alt="logo" width="110px" height="50px" />
+      </a>
+      <button id="btn-close" aria-label="btn-close" class="closeBtn w-10 h-10">
+        <Icon name="x" class="w-8 h-8 text-[#408657]" />
+      </button>
+    </div>
+
+    <ul class="ml-5 space-y-8 text-[#408657]">
+      <li class="font-semibold">
+        <a href="/" class="hover:text-[#cbe7d4]">Inicio</a>
+      </li>
+      <li class="font-semibold">
+        <a href="/acerca-de" class="hover:text-[#cbe7d4]">Acerca de</a>
+      </li>
+      <li class="font-semibold">
+        <a href="/testimonio" class="hover:text-[#cbe7d4]">Testimonios</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="overlay" class=""></div>
+
+<style>
+  #sidebar {
+    background-color: #f3faf5;
+    position: fixed;
+    width: 350px;
+    height: 100%;
+    left: -350px;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  #sidebar.active {
+    left: 0;
+  }
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    width: 100vw;
+    height: 100vh;
+    background-color: #25422f;
+    opacity: 0.5;
+    transition: all 0.5s ease-in-out;
+  }
+  #navbar {
+    z-index: 50;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+  #navbar.scrollhidden {
+    transform: translateY(-100%);
+  }
+</style>
+
+<script>
+  let lastScrollTop = 0;
+  const toggleBtn = document.getElementById("toggle-btn") as HTMLButtonElement;
+  const btnClose = document.getElementById("btn-close") as HTMLButtonElement;
+  const sidebar = document.getElementById("sidebar") as HTMLElement;
+  const overlay = document.getElementById("overlay") as HTMLElement;
+  const navbar = document.getElementById("navbar") as HTMLElement;
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        // Si el scroll actual es mayor al anterior, estamos bajando
+        navbar.classList.add("scrollhidden");
+      } else {
+        // Si el scroll actual es menor, estamos subiendo
+        navbar.classList.remove("scrollhidden");
+      }
+
+      // Actualizamos la posición para la siguiente comparación
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    },
+    false,
+  );
+
+  toggleBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("modal-backdrop");
+  });
+
+  btnClose.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("modal-backdrop");
+  });
+</script>
